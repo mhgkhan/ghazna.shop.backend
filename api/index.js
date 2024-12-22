@@ -17,7 +17,7 @@ app.use((req, res, next) => {
 app.use("/api/auth/", authRoute)
 
 app.get("/", (req, res) => {
-    res.status(200).json({ message: "hello world" })
+    res.status(200).json({ website: "https://ghazna.shop" })
 });
 
 
