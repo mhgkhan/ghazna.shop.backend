@@ -19,3 +19,4 @@ const userSchema = mongoose.Schema({
 
 
 const RegisterUserModel = mongoose.model("registeruser", userSchema)
+export default RegisterUserModel
