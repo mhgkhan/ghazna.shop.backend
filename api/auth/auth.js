@@ -7,7 +7,7 @@ const authRoute = express.Router();
 
 authRoute.get("/user", (req, res) => res.status(200).json({ success: true, message: "user is here" }))
 
-authRoute.post("/register", async (req, res) => {
+authRoute.post("/users/register", async (req, res) => {
    
     try {
         const body = req.body;
@@ -16,12 +16,12 @@ authRoute.post("/register", async (req, res) => {
     
         else {
             // checking if user is exists or not 
-            const checkUser = await RegisterUserModel.findOne({ email });
+            const checkUser = await RegisterUserModel.findOne({ email: body.email });
             if (checkUser) return sendResponse(res, 400, false, null, "User already exists")
     
             else {
                 // saving to the datbase 
-                const document = new RegisterUserModel({email,password});
+                const document = new RegisterUserModel({email:body.email,password:body.password});
                 await document.save();
                 // creating token 
                 const payload = {
