@@ -2,7 +2,6 @@ import express from "express";
 import os from "os"
 import cluster from "cluster"
 import authRoute from "./auth/auth.js";
-import connectDB from "../db/connectDB.js";
 import mongoose from "mongoose";
 
 const app = express();
@@ -34,7 +33,7 @@ else {
 
     mongoose.connect(DBURI).then(data => {
         console.log('DATABASE CONNECTED')
-        
+
         const PORT = process.env.PORT || 8090;
         app.listen(PORT, () => console.log("SERVER ARE LISTENNING ON PORT "+PORT));
 
