@@ -1,28 +1,22 @@
 {
   "name": "ghazna.shop.backend",
   "version": "1.0.0",
-  "description": "a backend for ghazna.shop",
   "main": "index.js",
-  "type":"module",
   "scripts": {
-    "test": "npm run dev",
-    "start": "node --env-file=.env api/index.js",
-    "dev": "node --env-file=.env --watch api/index.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mhgkhan/ghazna.shop.backend.git"
   },
-  "author": "mhgkhan",
+  "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/mhgkhan/ghazna.shop.backend/issues"
   },
   "homepage": "https://github.com/mhgkhan/ghazna.shop.backend#readme",
+  "description": "",
   "dependencies": {
-    "ejs": "^3.1.10",
-    "express": "^4.21.2",
-    "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.9.2"
+    "express": "^4.21.2"
   }
 }
