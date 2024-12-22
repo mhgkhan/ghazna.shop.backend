@@ -2,8 +2,11 @@
   "name": "ghazna.shop.backend",
   "version": "1.0.0",
   "main": "index.js",
+  "type":"module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node --env-file=.env api/index.js",
+    "dev": "node --env-file=.env --watch api/index.js",
+    "start": "node --env-file=.env api/index.js"
   },
   "repository": {
     "type": "git",
