@@ -2,12 +2,12 @@
   "name": "ghazna.shop.backend",
   "version": "1.0.0",
   "description": "a backend for ghazna.shop",
-  "main": "server.js",
+  "main": "index.js",
   "type":"module",
   "scripts": {
     "test": "npm run dev",
-    "start": "node --env-file=.env server.js",
-    "dev": "node --env-file=.env --watch server.js"
+    "start": "node --env-file=.env index.js",
+    "dev": "node --env-file=.env --watch index.js"
   },
   "repository": {
     "type": "git",
