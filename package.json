@@ -2,7 +2,7 @@
   "name": "ghazna.shop.backend",
   "version": "1.0.0",
   "main": "index.js",
-  "type":"module",
+  "type": "module",
   "scripts": {
     "test": "node --env-file=.env api/index.js",
     "dev": "node --env-file=.env --watch api/index.js",
@@ -20,6 +20,8 @@
   "homepage": "https://github.com/mhgkhan/ghazna.shop.backend#readme",
   "description": "",
   "dependencies": {
-    "express": "^4.21.2"
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.9.2"
   }
 }
