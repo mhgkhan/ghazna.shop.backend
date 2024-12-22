@@ -3,9 +3,11 @@
   "version": "1.0.0",
   "description": "a backend for ghazna.shop",
   "main": "server.js",
+  "type":"module",
   "scripts": {
     "test": "npm run dev",
-    "start": "node server.js"
+    "start": "node --env-file=.env server.js",
+    "dev": "node --env-file=.env --watch server.js"
   },
   "repository": {
     "type": "git",
@@ -16,5 +18,11 @@
   "bugs": {
     "url": "https://github.com/mhgkhan/ghazna.shop.backend/issues"
   },
-  "homepage": "https://github.com/mhgkhan/ghazna.shop.backend#readme"
+  "homepage": "https://github.com/mhgkhan/ghazna.shop.backend#readme",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.9.2"
+  }
 }
