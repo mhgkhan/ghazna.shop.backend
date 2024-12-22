@@ -1,0 +1,20 @@
+{
+  "name": "ghazna.shop.backend",
+  "version": "1.0.0",
+  "description": "a backend for ghazna.shop",
+  "main": "server.js",
+  "scripts": {
+    "test": "npm run dev",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mhgkhan/ghazna.shop.backend.git"
+  },
+  "author": "mhgkhan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mhgkhan/ghazna.shop.backend/issues"
+  },
+  "homepage": "https://github.com/mhgkhan/ghazna.shop.backend#readme"
+}
