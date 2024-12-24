@@ -27,18 +27,32 @@ app.get("/", (req, res) => {
 
 
 
+
+
+app.use((err, req, res, next) => {
+    return res.status(err.status).json({
+        error: err.message,
+        type: err.type,
+        stack: err.stack,
+        method: err.method,
+    })
+})
+
+
+
+
 const DBURI = process.env.DB_URI
 
 mongoose.connect(DBURI).then(data => {
     console.log('DATABASE CONNECTED')
 
-    
+
 }).catch(err => {
     console.log(err)
     process.exit(1)
 })
 const PORT = process.env.PORT || 8090;
-app.listen(PORT, () => console.log("SERVER ARE LISTENNING ON PORT "+PORT));
+app.listen(PORT, () => console.log("SERVER ARE LISTENNING ON PORT " + PORT));
 
 // if (cluster.isPrimary) {
 //     for (let i = 0; i < os.cpus().length; i++) cluster.fork()
