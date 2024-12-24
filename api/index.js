@@ -2,8 +2,6 @@ import dotenv from "dotenv"
 dotenv.config();
 
 import express from "express";
-import os from "os"
-import cluster from "cluster"
 import authRoute from "./auth/auth.js";
 import mongoose from "mongoose";
 

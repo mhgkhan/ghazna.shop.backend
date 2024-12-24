@@ -6,7 +6,6 @@ const defType = {
 }
 
 const userSchema = mongoose.Schema({
-
     email: {
         ...defType,
         unique: true
@@ -16,7 +15,6 @@ const userSchema = mongoose.Schema({
         type: Boolean,
         default: false
     },
-
 }, {
     timestamps: true
 })
