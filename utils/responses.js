@@ -6,6 +6,14 @@ export const sendSuccessResponse = (res, status, success, data, message) => {
     })
 }
 
+export const sendErrResponse = (res, success, message, status) =>{
+    return res.status(status).json({
+        success: success,
+        message
+    })
+}
+
+
 
 export const errResponse = (error, status, method) => {
 

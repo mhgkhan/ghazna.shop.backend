@@ -1,46 +1,57 @@
-import { errResponse, sendSuccessResponse } from "../utils/responses.js";
-import RegisterUserModel from "../models/RegisterUser.js";
-import JsonWebToken from "jsonwebtoken"
+import { errResponse, sendErrResponse, sendSuccessResponse } from "../utils/responses.js";
+import { checkExistUserByEmail, saveUser } from "../utils/dbOperations.js";
+import { generateJWTToken, hashPassword } from "../utils/hasingAndTokens.js";
 
 
 class authControllers {
     static handleRegister = async (req, res) => {
-
         try {
-            const body = req.body;
-            if (body.email && body.email.length < 5 && body.password && body.password.length < 8) return sendSuccessResponse(res, 401, false, null, "email or password not valid")
-
-
-            else {
-                // checking if user is exists or not 
-                const checkUser = await RegisterUserModel.findOne({ email: body.email });
-                if (checkUser) return sendSuccessResponse(res, 400, false, null, "User already exists")
-
-                else {
-                    // saving to the datbase 
-                    const document = new RegisterUserModel({ email: body.email, password: body.password });
-                    await document.save();
-                    // creating token 
-                    const payload = {
-                        email: document.email,
-                        password: document.password
-                    }
-                    const token = JsonWebToken.sign(payload, process.env.JWT_SECRET_KEY);
-
-                    return sendSuccessResponse(res, 201, true, document, token)
-                }
-
-
+            const { email, password } = req.body;
+            // checking if user is exists or not 
+            const checkUser = await checkExistUserByEmail(email);
+            if (checkUser) {
+                return sendErrResponse(res, false, "User already exists", 409)
             }
+            else {
+                // hashing the password with bcrypt 
+                const hashingPassword = await hashPassword(password)
+                if (hashingPassword.ok) {
+                    // saving data to the database
+                    const savingUser = await saveUser(email, hashingPassword.password)
+                    if (!savingUser.ok) {
+                        return errResponse("Error in saving user", 500, "POST")
+                    }
+                    const document = savingUser.document;
+                    // creating token
+                    const token = generateJWTToken({ id: document._id }, "10h");
+                    return sendSuccessResponse(res, 201, true, { token }, "User registered successfully")
+                }
+                else {
+                    return errResponse("Error in hashing password", 500, "POST")
+                }
+            }
+
         } catch (error) {
             return errResponse(error, 500, "POST")
         }
-
     }
 
 
 
-    // handle signin 
+    // creating handler for signin (login) with validation and check if user is verify or not, token, comparing password
+    static handleSignin = async (req, res) => {
+        try {
+
+            const {email,password} = req.body;
+            
+
+
+            
+            
+        } catch (error) {
+            return errResponse(error, 500, "POST")
+        }
+    }
 }
 
 export default authControllers
