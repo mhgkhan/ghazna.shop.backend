@@ -29,6 +29,6 @@ export const comparePassword = async (password, hashedPassword) => {
 
 // generate jwt token 
 export const generateJWTToken = (payload, time) => {
-    const token = JsonWebToken.sign(payload, process.env.JWT_SECRET_KEY, { expiresIn: time });  
+    const token = JsonWebToken.sign(payload, process.env.JWT_SECRET_KEY, { expiresIn: time });
     return token;
 }

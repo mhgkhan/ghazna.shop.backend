@@ -42,12 +42,12 @@ class authControllers {
     static handleSignin = async (req, res) => {
         try {
 
-            const {email,password} = req.body;
-            
+            const { email, password } = req.body;
 
 
-            
-            
+
+
+
         } catch (error) {
             return errResponse(error, 500, "POST")
         }

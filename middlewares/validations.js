@@ -1,11 +1,13 @@
+import { sendErrResponse } from "../utils/responses.js"
+
 export const checkIfSigninSignupRecieveDataIsValid = (req, res, next) => {
-    if (!body.email || body.email.length < 5) {
+    if (!req.body.email || req.body.email.length < 5) {
         return sendErrResponse(res, false, "Email not valid", 400)
     }
-    if (!body.password || body.password.length < 8) {
+    if (!req.body.password || req.body.password.length < 8) {
         return sendErrResponse(res, false, "Password not valid", 400)
     }
     else {
-        next()
+        return next()
     }
 }
