@@ -11,7 +11,11 @@ const userSchema = mongoose.Schema({
         ...defType,
         unique: true
     },
-    password: defType
+    password: defType,
+    isVerified: {
+        type: Boolean,
+        default: false
+    },
 
 }, {
     timestamps: true
