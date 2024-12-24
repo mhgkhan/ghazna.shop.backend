@@ -2,7 +2,7 @@ import RegisterUserModel from "../models/RegisterUser.js"
 
 export const checkExistUserByEmail = async (email) => {
     const checkUser = await RegisterUserModel.findOne({ email });
-    return checkUser ? true : false;
+    return checkUser ? { ok: true, user: checkUser } : false;
 }
 
 export const checkExistUserById = async (id) => {
