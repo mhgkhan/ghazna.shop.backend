@@ -10,15 +10,11 @@ import cors from "cors";
 const app = express();
 
 
-// implementing cors 
-// const allowedOrigins = ['http://ghazna.shop', 'http://localhost:5173','https://ghazna.shop', 'https://www.ghazna.shop'];
-// const corsOptions = { origin: function (origin, callback) { if (!origin || allowedOrigins.indexOf(origin) !== -1) { callback(null, true); } else { callback(new Error('Not allowed by CORS')); } } };
-
-
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
-app.use(cors())
+app.use(cors({ origin: 'http://your-frontend-origin.com'}))
+
 
 app.use((req, res, next) => {
     req.user = req.headers.location;
