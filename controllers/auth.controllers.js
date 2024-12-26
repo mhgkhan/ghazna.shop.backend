@@ -21,6 +21,7 @@ class authControllers {
                     const document = savingUser.document;
                     // creating token
                     const token = generateJWTToken({ id: document._id }, "10h");
+                    
                     return sendSuccessResponse(res, 201, true, { token, verified:false }, "User registered successfully")
                 }
                 else {
@@ -67,7 +68,7 @@ class authControllers {
                         return sendSuccessResponse(res, 200, true, { token }, "User logged in successfully")
                     }
                     else {
-                        return sendSuccessResponse(res, 200, true, { token, verifed:false }, "User logged in successfully")
+                        return sendSuccessResponse(res, 200, true, { token, verified:false }, "User logged in successfully")
                     }
 
                 }
