@@ -61,10 +61,11 @@ class authControllers {
 
                 else {
 
+                    // creating token
+                    const token = generateJWTToken({ id: checkUser.user._id }, "10h");
+
                     // check if user is verify or not 
                     if (checkUser.user.isVerified) {
-                        // creating token
-                        const token = generateJWTToken({ id: checkUser.user._id }, "10h");
                         return sendSuccessResponse(res, 200, true, { token }, "User logged in successfully")
                     }
                     else {
