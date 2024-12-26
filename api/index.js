@@ -20,7 +20,7 @@ app.use((req, res, next) => {
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
-app.use(cors({ origin: 'http://your-frontend-origin.com' }))
+app.use(cors({ origin: 'https://ghazna.shop/' }))
 
 
 app.use((req, res, next) => {
