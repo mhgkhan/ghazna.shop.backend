@@ -1,5 +1,5 @@
 import { errResponse, sendErrResponse, sendSuccessResponse } from "../utils/responses.js";
-import { checkExistUserByEmail, getUserByEmail, saveUser } from "../utils/dbOperations.js";
+import { checkExistUserByEmail, saveUser } from "../utils/dbOperations.js";
 import { comparePassword, generateJWTToken, hashPassword } from "../utils/hasingAndTokens.js";
 
 
@@ -48,7 +48,7 @@ class authControllers {
             // checking if user is exits or not 
             const checkUser = await checkExistUserByEmail(email);
             if (!checkUser) {
-                return sendErrResponse(res, false, "User not found", 404)
+                return sendErrResponse(res, false, "User not found", 400)
             }
 
             else {
@@ -76,14 +76,13 @@ class authControllers {
 
 
             }
-
-
-
-
         } catch (error) {
             return errResponse(error, 500, "POST")
         }
     }
+
+
+    
 }
 
 export default authControllers
