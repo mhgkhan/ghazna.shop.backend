@@ -8,6 +8,7 @@ authRoute.get("/user", (req, res) => res.status(200).json({ success: true, messa
 
 authRoute.post("/users/register",checkIfSigninSignupRecieveDataIsValid, authControllers.handleRegister)
 authRoute.post("/users/signin",checkIfSigninSignupRecieveDataIsValid, authControllers.handleSignin)
+authRoute.post("/users/checktoken", authControllers.handleCheckToken)
 
 
 

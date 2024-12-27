@@ -32,3 +32,13 @@ export const generateJWTToken = (payload, time) => {
     const token = JsonWebToken.sign(payload, process.env.JWT_SECRET_KEY, { expiresIn: time });
     return token;
 }
+
+// verify jwt token
+export const verifyJWTToken = (token) => {
+    try {
+        const decoded = JsonWebToken.verify(token, process.env.JWT_SECRET_KEY);
+        return decoded;
+    } catch (error) {
+        return false;
+    }
+}

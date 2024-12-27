@@ -1,6 +1,6 @@
 import { errResponse, sendErrResponse, sendSuccessResponse } from "../utils/responses.js";
 import { checkExistUserByEmail, saveUser } from "../utils/dbOperations.js";
-import { comparePassword, generateJWTToken, hashPassword } from "../utils/hasingAndTokens.js";
+import { comparePassword, generateJWTToken, hashPassword, verifyJWTToken } from "../utils/hasingAndTokens.js";
 
 
 class authControllers {
@@ -20,9 +20,9 @@ class authControllers {
                     }
                     const document = savingUser.document;
                     // creating token
-                    const token = generateJWTToken({ id: document._id, verified:false }, "10h");
+                    const token = generateJWTToken({ id: document._id, verified: false }, "10h");
 
-                    return sendSuccessResponse(res, 201, true, { token}, "User registered successfully")
+                    return sendSuccessResponse(res, 201, true, { token }, "User registered successfully")
                 }
                 else {
                     return errResponse("Error in hashing password", 500, "POST")
@@ -63,7 +63,29 @@ class authControllers {
         }
     }
 
-    
+    static handleCheckToken = async (req, res) => {
+        try {
+            const { token } = req.body;
+            if (!token || token == undefined || token.length < 10) {
+                return sendErrResponse(res, false, "Token not found", 400)
+            }
+            else {
+                const verifyToken = verifyJWTToken(token);
+                if (!verifyToken) {
+                    return sendErrResponse(res, false, "Token not valid", 400)
+                }
+                else {
+                    if(!verifyToken.verified){
+                        return sendErrResponse(res, false, "Token not verified", 400)
+                    }
+                    return sendSuccessResponse(res, 200, true, { token }, "Token is valid")
+                }
+            }
+        } catch (error) {
+            return errResponse(error, 500, "POST")
+        }
+    }
+
 }
 
 export default authControllers
