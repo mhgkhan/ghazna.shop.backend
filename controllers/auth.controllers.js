@@ -20,9 +20,9 @@ class authControllers {
                     }
                     const document = savingUser.document;
                     // creating token
-                    const token = generateJWTToken({ id: document._id }, "10h");
+                    const token = generateJWTToken({ id: document._id, verified:false }, "10h");
 
-                    return sendSuccessResponse(res, 201, true, { token, verified: false }, "User registered successfully")
+                    return sendSuccessResponse(res, 201, true, { token}, "User registered successfully")
                 }
                 else {
                     return errResponse("Error in hashing password", 500, "POST")
@@ -31,7 +31,6 @@ class authControllers {
             else {
                 return sendErrResponse(res, false, "User already exists", 409)
             }
-
         } catch (error) {
             return errResponse(error, 500, "POST")
         }
@@ -44,29 +43,22 @@ class authControllers {
         try {
 
             const { email, password } = req.body;
-
             // checking if user is exits or not 
             const checkUser = await checkExistUserByEmail(email);
             if (!checkUser) {
                 return sendErrResponse(res, false, "User not found", 400)
             }
-
             else {
-
                 // check the uer password 
                 const compareUserPassword = await comparePassword(password, checkUser.user?.password)
                 if (!compareUserPassword) {
                     return sendErrResponse(res, false, "invilid credientials", 400)
                 }
-
                 else {
-
                     // creating token
                     const token = generateJWTToken({ id: checkUser.user._id, verified: checkUser.user.verified }, "10h");
                     return sendSuccessResponse(res, 200, true, { token }, "User logged in successfully")
                 }
-
-
             }
         } catch (error) {
             return errResponse(error, 500, "POST")
