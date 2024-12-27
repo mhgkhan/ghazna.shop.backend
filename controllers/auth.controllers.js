@@ -37,7 +37,6 @@ class authControllers {
     }
 
 
-
     // creating handler for signin (login) with validation and check if user is verify or not, token, comparing password
     static handleSignin = async (req, res) => {
         try {
