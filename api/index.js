@@ -8,6 +8,7 @@ import cors from "cors";
 import dashboardRouter from "./auth/dashboard/dashboard.routes.js";
 
 
+
 const app = express();
 app.use(cors())
 console.log('cors enabled')
