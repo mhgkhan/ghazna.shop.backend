@@ -1,4 +1,5 @@
 import express from "express";
+import { errResponse } from "../../../utils/responses.js";
 
 const dashboardRouter = express.Router();
 
@@ -6,7 +7,12 @@ const dashboardRouter = express.Router();
 
 // })
 dashboardRouter.get("/auth/signin", async (req, res) => {
-    res.status(200).render("dashboard/signin", { title: "Signin" });
+   try {
+    res.status(200).render("dashboard/login", { title: "Signin", heading: "Signin to your account " });
+   //  res.status(200).render("index", { title: "Signin", heading: "Signin to your account " });
+   } catch (error) {
+    return errResponse(error, 500, "GET")
+   }
 })
 
 

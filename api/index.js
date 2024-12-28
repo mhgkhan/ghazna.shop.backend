@@ -6,7 +6,8 @@ import authRoute from "./auth/auth.js";
 import mongoose from "mongoose";
 import cors from "cors";
 import dashboardRouter from "./auth/dashboard/dashboard.routes.js";
-
+import path from "path"
+import ejs from "ejs"
 
 
 const app = express();
@@ -17,8 +18,8 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
 app.set("view engine", "ejs");
-app.set("views", "views");
-
+// app.set("views", path.join(process.cwd(), "../views"));
+app.set("views", path.join(process.cwd(), "views"))
 
 app.use("/api/auth/", authRoute);
 app.use("/app/admin/", dashboardRouter);
@@ -30,7 +31,7 @@ app.get("/", (req, res) => {
 
 
 app.use((err, req, res, next) => {
-    return res.status(err.status).json({
+    return res.status(err.status ?? 500).json({
         error: err.message,
         type: err.type,
         stack: err.stack,

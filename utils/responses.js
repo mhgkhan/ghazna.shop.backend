@@ -18,7 +18,7 @@ export const sendErrResponse = (res, success, message, status) =>{
 export const errResponse = (error, status, method) => {
 
     const err = new Error(error);
-    err.status = status
+    err.status = status ?? 500
     err.stack = error.stack
     err.type = error.type
     err.method = method
