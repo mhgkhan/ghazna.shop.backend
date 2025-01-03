@@ -19,39 +19,25 @@
 <body>
 
     <header>
-       <div class="container">
-        
-          <div class="header-area  flex flex-a-c flex-j-b">
-            <div class="logoandbutton flex flex-a-c flex-j-b">
-                <div class="logo flex f-col flex-a-c flex-j-s">
-                    <div class="top-logo flex gap-5">
-                        <span>GH</span>
-                        <span>SHOP</span>
-                    </div>
-                    <div class="bottom-logo">
-                        <span class="span-2">PORTAL</span>
-                    </div>
-                </div> 
+        <div class="container">
+
+            <div class="header-area  flex flex-a-c flex-j-b">
+                <div class="logoandbutton flex flex-a-c flex-j-b">
+                    <%- include('Logo.ejs') %>
+                </div>
+                <nav>
+                    <ul class="flex gap-5">
+                        <li><a href="#">HOME</a></li>
+                        <li><a href="#">LOGIN</a></li>
+                        <li><a href="">SEARCH</a></li>
+                    </ul>
+                </nav>
+
             </div>
-            <nav>
-               <ul class="flex gap-5">
-                <li><a href="#">HOME</a></li>
-                <li><a href="#">LOGIN</a></li>
-                <li><a href="">SEARCH</a></li>
-               </ul>
-            </nav>
-
-          </div>
 
 
-       </div> 
+        </div>
 
     </header>
 
-    <main class="vh-100">
-
-
-        
-
-
-
+    <main>
