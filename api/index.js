@@ -7,13 +7,12 @@ import mongoose from "mongoose";
 import cors from "cors";
 import dashboardRouter from "./auth/dashboard/dashboard.routes.js";
 import path from "path"
-import ejs from "ejs"
 
 
 const app = express();
 app.use(cors())
-console.log('cors enabled')
 
+app.use(express.static(path.join(process.cwd(), "public")))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
