@@ -7,24 +7,23 @@ import mongoose from "mongoose";
 import cors from "cors";
 import dashboardRouter from "./auth/dashboard/dashboard.routes.js";
 import path from "path"
+import fs from 'fs'
 
 
 const app = express();
 app.use(cors())
 
-app.use(express.static(path.join(path.resolve(), "/public")))
-
-console.log(express.static(path.join(path.resolve(), "public")));
-
+const __dirname = path.resolve();
+app.use(express.static(path.join(__dirname, "/public")))
 
 
-// console.log(fs.readdirSync(path.join(process.cwd(), "public")))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
 app.set("view engine", "ejs");
 // app.set("views", path.join(process.cwd(), "../views"));
-app.set("views", path.join(process.cwd(), "views"))
+// app.set("views", path.join(process.cwd(), "views"))
+app.set("views", path.join(__dirname, "views"));
 
 app.use("/api/auth/", authRoute);
 app.use("/app/admin/", dashboardRouter);
