@@ -13,6 +13,11 @@ const app = express();
 app.use(cors())
 
 app.use(express.static(path.join(process.cwd(), "/public")))
+
+console.log(express.static(path.join(path.resolve(), "public")));
+
+
+
 // console.log(fs.readdirSync(path.join(process.cwd(), "public")))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
