@@ -1,61 +1,76 @@
 <%- include('components/Header.ejs') %>
 
-<div class="container mx-auto mt-5 mb-5">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="card shadow-lg">
-                <div class="card-body">
-                    <h2 class="card-title text-center">Login</h2>
-                    <p class="text-center">Please enter your credentials to login.</p>
-                    <form id="loginForm" novalidate>
-                        <div class="form-group">
-                            <label for="email">Email address</label>
-                            <input type="email" class="form-control" id="email" placeholder="Enter email" required>
-                            <div class="invalid-feedback">
-                                Please provide a valid email.
+    <section class="login-section def-section w-full">
+        <div class="container">
+
+            <div class="login-area flex">
+                <form class="p-auto">
+                    <h1 class="section-heading">Login </h1>
+                    <p class="section-para">Enter your valid credientials to access your account. </p>
+
+                    <div class="inputs w-full mt-5">
+
+                        <div class="input-area w-full">
+
+                            <div class="input flex f-col">
+                                <label for="email">Email</label>
+                                <input type="text" id="email" name="email" required placeholder="Enter email">
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="password">Password</label>
-                            <input type="password" class="form-control" id="password" placeholder="Password" required>
-                            <div class="invalid-feedback">
-                                Please provide a password.
+
+                            <div class="input flex f-col mt-5">
+                                <label for="password">Password </label>
+                                <input type="password" id="password" name="password" required placeholder="Enter password">
                             </div>
+
+                            <button class="d-btn login-btn">Login </button>
+
+
                         </div>
-                        <button type="submit" class="btn btn-primary btn-block mt-4">Login</button>
-                    </form>
-                </div>
+
+
+
+                    </div>
+
+                    <div class="flex flex-a-c flex-j-b w-full form-bottom" >
+                        <a href="#">Not have an account</a>
+                        <a href="#">Forget password </a>
+                    </div>
+                </form>
+
+
+
             </div>
+
+
         </div>
-    </div>
-</div>
+    </section>
 
-<%- include('components/Footer.ejs') %>
+    <%- include('components/Footer.ejs') %>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const form = document.getElementById('loginForm');
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const form = document.getElementById('loginForm');
 
-        form.addEventListener('submit', function(event) {
-            event.preventDefault();
-            event.stopPropagation();
+                form.addEventListener('submit', function (event) {
+                    event.preventDefault();
+                    event.stopPropagation();
 
-            if (form.checkValidity() === false) {
-                form.classList.add('was-validated');
-            } else {
-                handleFormSubmission();
-            }
-        });
+                    if (form.checkValidity() === false) {
+                        form.classList.add('was-validated');
+                    } else {
+                        handleFormSubmission();
+                    }
+                });
 
-        function handleFormSubmission() {
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
+                function handleFormSubmission() {
+                    const email = document.getElementById('email').value;
+                    const password = document.getElementById('password').value;
 
-            // Perform your form submission logic here
-            console.log('Form submitted with:', { email, password });
+                    // Perform your form submission logic here
+                    console.log('Form submitted with:', { email, password });
 
-            // Example: Display a success message
-            alert('Login successful!');
-        }
-    });
-</script>
+                    // Example: Display a success message
+                    alert('Login successful!');
+                }
+            });
+        </script>
