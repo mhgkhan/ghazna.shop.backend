@@ -12,7 +12,8 @@ import path from "path"
 const app = express();
 app.use(cors())
 
-app.use(express.static(path.join(process.cwd(), "public")))
+app.use(express.static(path.join(process.cwd(), "/public")))
+// console.log(fs.readdirSync(path.join(process.cwd(), "public")))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
@@ -54,9 +55,4 @@ mongoose.connect(DBURI).then(data => {
 const PORT = process.env.PORT || 8090;
 app.listen(PORT, () => console.log("SERVER ARE LISTENNING ON PORT " + PORT));
 
-// if (cluster.isPrimary) {
-//     for (let i = 0; i < os.cpus().length; i++) cluster.fork()
-// }
-// else {
-// }
 export default app;
