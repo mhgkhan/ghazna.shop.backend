@@ -24,12 +24,19 @@
             <div class="header-area  flex flex-a-c flex-j-b">
                 <div class="logoandbutton flex flex-a-c flex-j-b">
                     <%- include('Logo.ejs') %>
+                    <button class="d-btn" id="header-btn">
+                        <p>&HorizontalLine;</p>
+                        <p>&HorizontalLine;</p>
+                        <p>&HorizontalLine;</p>
+                    </button>
                 </div>
-                <nav>
+                <nav id="header-nav">
                     <ul class="flex gap-5">
                         <li><a href="#">HOME</a></li>
                         <li><a href="#">LOGIN</a></li>
-                        <li><a href="">SEARCH</a></li>
+                        <li><a href="#">CONTACT</a></li>
+                        <li><a href="#">CONTACT</a></li>
+                        <li><a href="#">CONTACT</a></li>
                     </ul>
                 </nav>
 
@@ -39,5 +46,24 @@
         </div>
 
     </header>
+
+    <!-- header script  -->
+    <script>
+        const headerNav = document.getElementById("header-nav"),
+            headerBtn = document.getElementById("header-btn")
+        let headerOpened = false;
+
+        headerBtn.addEventListener("click", e => {
+            if(headerOpened){
+                headerOpened = false;
+                headerNav.setAttribute("style", "height:0px")
+            }
+            else{
+                headerOpened = true;
+                headerNav.setAttribute("style", "height:300px")
+            }
+        })
+
+    </script>
 
     <main>
