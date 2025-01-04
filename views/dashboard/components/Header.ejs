@@ -5,15 +5,15 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/assets/css/classes.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+    <link rel="stylesheet" href="/assets/css/media.css" media="(max-width:900px)" />
 
 
     <title>
         <%= title %>
     </title>
 
-    <link rel="stylesheet" href="/assets/css/style.css">
-    <link rel="stylesheet" href="/assets/css/classes.css">
-    <link rel="stylesheet" href="/assets/css/media.css" media="(max-width:900px)">
 </head>
 
 <body>
@@ -24,11 +24,11 @@
             <div class="header-area  flex flex-a-c flex-j-b">
                 <div class="logoandbutton flex flex-a-c flex-j-b">
                     <%- include('Logo.ejs') %>
-                    <button class="d-btn" id="header-btn">
-                        <p>&HorizontalLine;</p>
-                        <p>&HorizontalLine;</p>
-                        <p>&HorizontalLine;</p>
-                    </button>
+                        <button class="d-btn" id="header-btn">
+                            <p>&HorizontalLine;</p>
+                            <p>&HorizontalLine;</p>
+                            <p>&HorizontalLine;</p>
+                        </button>
                 </div>
                 <nav id="header-nav">
                     <ul class="flex gap-5">
@@ -54,11 +54,11 @@
         let headerOpened = false;
 
         headerBtn.addEventListener("click", e => {
-            if(headerOpened){
+            if (headerOpened) {
                 headerOpened = false;
                 headerNav.setAttribute("style", "height:0px")
             }
-            else{
+            else {
                 headerOpened = true;
                 headerNav.setAttribute("style", "height:300px")
             }
