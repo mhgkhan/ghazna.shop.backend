@@ -1,5 +1,5 @@
 import express from "express";
-import authControllers from "../../../controllers/auth.controllers.js";
+import authControllers from "../../../controllers/frontend/auth.controllers.js";
 import { checkIfSigninSignupRecieveDataIsValid } from "../../../middlewares/validations.js";
 
 const authRoute = express.Router();

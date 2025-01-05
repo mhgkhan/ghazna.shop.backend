@@ -1,6 +1,6 @@
-import { errResponse, sendErrResponse, sendSuccessResponse } from "../utils/responses.js";
-import { checkExistUserByEmail, saveUser } from "../utils/dbOperations.js";
-import { comparePassword, generateJWTToken, hashPassword, verifyJWTToken } from "../utils/hasingAndTokens.js";
+import { errResponse, sendErrResponse, sendSuccessResponse } from "../../utils/responses.js";
+import { checkExistUserByEmail, saveUser } from "../../utils/dbOperations.js";
+import { comparePassword, generateJWTToken, hashPassword, verifyJWTToken } from "../../utils/hasingAndTokens.js";
 
 
 class authControllers {
