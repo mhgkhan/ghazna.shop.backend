@@ -7,10 +7,11 @@ import mongoose from "mongoose";
 import cors from "cors";
 import dashboardRouter from "./auth/dashboard/dashboard.routes.js";
 import path from "path";
-
+import cookieParser from "cookie-parser";
 
 const app = express();
 app.use(cors())
+app.use(cookieParser())
 
 const __dirname = path.resolve();
 app.use(express.static(path.join(__dirname, "/public")))
