@@ -32,7 +32,7 @@
                     </div>
 
                     <div class="flex flex-a-c flex-j-b w-full form-bottom" >
-                        <a href="#">Not have an account</a>
+                        <a href="/app/admin/auth/signup">Not have an account</a>
                         <a href="#">Forget password </a>
                     </div>
                 </form>
@@ -47,30 +47,3 @@
 
     <%- include('components/Footer.ejs') %>
 
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                const form = document.getElementById('loginForm');
-
-                form.addEventListener('submit', function (event) {
-                    event.preventDefault();
-                    event.stopPropagation();
-
-                    if (form.checkValidity() === false) {
-                        form.classList.add('was-validated');
-                    } else {
-                        handleFormSubmission();
-                    }
-                });
-
-                function handleFormSubmission() {
-                    const email = document.getElementById('email').value;
-                    const password = document.getElementById('password').value;
-
-                    // Perform your form submission logic here
-                    console.log('Form submitted with:', { email, password });
-
-                    // Example: Display a success message
-                    alert('Login successful!');
-                }
-            });
-        </script>

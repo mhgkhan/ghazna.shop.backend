@@ -1,0 +1,85 @@
+<%- include('components/Header.ejs') %>
+
+    <section class="login-section def-section w-full">
+        <div class="container">
+
+            <div class="login-area flex">
+                <form class="p-auto">
+                    <h1 class="section-heading">Signup  </h1>
+                    <p class="section-para"> Create your account with valid credientials . </p>
+
+                    <div class="inputs w-full mt-5">
+
+                        <div class="input-area w-full">
+
+                            <div class="input flex f-col">
+                                <label for="email">Email</label>
+                                <input type="text" id="email" name="email" required placeholder="Enter email">
+                            </div>
+
+                            <div class="input flex f-col mt-5">
+                                <label for="password">Password </label>
+                                <input type="password" id="password" name="password" required placeholder="Enter password">
+                            </div>
+
+
+                            <div class="input flex f-col mt-5">
+                                <label for="passwordc">Confirm password  </label>
+                                <input type="passwordc" id="passwordc" name="cpassword" required placeholder="Confirm password">
+                            </div>
+
+
+
+                            <button class="d-btn login-btn">Register  </button>
+
+
+                        </div>
+
+
+
+                    </div>
+
+                    <div class="flex flex-a-c flex-j-b w-full form-bottom" >
+                        <a href="/app/admin/auth/signin">Already have an account </a>
+                        <a href="#">Forget password </a>
+                    </div>
+                </form>
+
+
+
+            </div>
+
+
+        </div>
+    </section>
+
+    <%- include('components/Footer.ejs') %>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const form = document.getElementById('loginForm');
+
+                form.addEventListener('submit', function (event) {
+                    event.preventDefault();
+                    event.stopPropagation();
+
+                    if (form.checkValidity() === false) {
+                        form.classList.add('was-validated');
+                    } else {
+                        handleFormSubmission();
+                    }
+                });
+
+                function handleFormSubmission() {
+                    const email = document.getElementById('email').value;
+                    const password = document.getElementById('password').value;
+
+                    // Perform your form submission logic here
+                    console.log('Form submitted with:', { email, password });
+
+                    // Example: Display a success message
+                    alert('Login successful!');
+                }
+            });
+        </script>
+

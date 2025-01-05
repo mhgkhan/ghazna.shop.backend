@@ -12,3 +12,4 @@ dashboardRouter.get("/auth/signin", RedirectDashboard, GetRequestControllers.han
 dashboardRouter.get("/auth/signup", RedirectDashboard, GetRequestControllers.handleSignupPage)
 
 export default dashboardRouter;
+
