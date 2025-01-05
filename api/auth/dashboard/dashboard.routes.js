@@ -9,7 +9,6 @@ const dashboardRouter = express.Router();
 
 // })
 dashboardRouter.get("/auth/signin", RedirectDashboard, GetRequestControllers.handleSigninPage)
-
-
+dashboardRouter.get("/auth/signup", RedirectDashboard, GetRequestControllers.handleSignupPage)
 
 export default dashboardRouter;

@@ -9,6 +9,21 @@ class GetRequestControllers {
             return errResponse(error, 500, "GET")
         }
     }
+
+
+    static handleSignupPage = async (req, res) => {
+        let ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+        if (ip === process.env.ip) {
+            try {
+                res.status(200).render("dashboard/signup", { title: "Signup", heading: "Create an account " });
+            } catch (error) {
+                return errResponse(error, 500, "GET")
+            }
+        }
+        else {
+            return res.status(403).send("Forbidden")
+        }
+    }
 }
 
 export default GetRequestControllers
