@@ -1,4 +1,4 @@
-import { errResponse } from "../../utils/responses.js";
+import { errResponse } from "../../../utils/responses.js";
 
 class GetRequestControllers {
     static handleSigninPage = async (req, res) => {

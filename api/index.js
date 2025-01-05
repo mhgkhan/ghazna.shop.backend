@@ -2,12 +2,12 @@ import dotenv from "dotenv"
 dotenv.config();
 
 import express from "express";
-import authRoute from "./auth/auth.js";
 import mongoose from "mongoose";
 import cors from "cors";
-import dashboardRouter from "./auth/dashboard/dashboard.routes.js";
+import dashboardRouter from "./auth/dashboard/dashboard.routes.js"
 import path from "path";
 import cookieParser from "cookie-parser";
+import authRoute from "./auth/frontend/auth.js";
 
 const app = express();
 app.use(cors())

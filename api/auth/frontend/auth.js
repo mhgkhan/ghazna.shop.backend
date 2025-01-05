@@ -1,6 +1,6 @@
 import express from "express";
-import authControllers from "../../controllers/auth.controllers.js";
-import { checkIfSigninSignupRecieveDataIsValid } from "../../middlewares/validations.js";
+import authControllers from "../../../controllers/auth.controllers.js";
+import { checkIfSigninSignupRecieveDataIsValid } from "../../../middlewares/validations.js";
 
 const authRoute = express.Router();
 
@@ -13,4 +13,8 @@ authRoute.post("/users/checktoken", authControllers.handleCheckToken)
 
 
 export default authRoute
+
+
+
+
 
