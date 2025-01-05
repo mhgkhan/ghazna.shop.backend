@@ -1,0 +1,170 @@
+1- PROJECT ROUTES (GET AND POST)
+    GLOBAL ROUTES FOR USER AND SELLER 
+        - /api/auth/signin
+        - /api/auth/signup
+        - /api/auth/verify
+        - /api/auth/logout 
+
+    USER ROUTES 
+        - /api/user/addinfo
+        - /api/user/updateinfo
+        - /api/user/cart 
+        - /api/user/vishlist
+        - /api/user/history
+        
+    SELLER ROUTES
+        - /api/seller/addinfo
+        - /api/seller/updateinfo
+        PRODUCTS:
+            - /api/seller/products/create
+            - /api/seller/products/update
+            - /api/seller/products/delete
+            - /api/seller/products/
+
+    ADMIN ROUTES
+        - /api/admin/auth/signin
+        - /api/admin/auth/signup (only for selected IP)
+        - /api/admin/auth/logout 
+        - /api/admin/users/
+            - /api/admin/users/delete
+            - /api/admin/users/update
+            - /api/admin/users/open
+        - /api/admin/sellers
+            - /api/admin/sellers/open
+            - /api/admin/sellers/verify
+            - /api/admin/sellers/delete
+            - /api/admin/sellers/update
+                - /api/admin/seller/products
+                -/api/admin/seller/products/update
+                -/api/admin/seller/products/delete
+                -/api/admin/seller/products/band 
+                -/api/admin/seller/products/open 
+
+
+
+
+
+2- PROJECT FOLDER STRUCTURE 
+    API (ALL FOLDER HAVE THEIR CONTROLLER FOLDER OK)
+        INDEX.JS 
+        USER 
+            G_USER 
+                AUTH.JS
+                USER.JS (info)
+            SELLER  
+                AUTH.JS
+                SELLER (info)
+                PRODUCTS
+        ADMIN 
+            AUTH.JS
+            G_USERS
+            SELLERS
+                PRODUCTS OPERATIONS 
+    VIEWS : ✔️
+        ADMIN 
+            COMPONENTS
+            PAGES
+        SELLER
+            COMPONENTS
+            PAGES 
+        
+    MIDDLEWARES 
+        ADMIN 
+        USER
+        SELLER 
+
+    MODELS ✔️
+        ADMIN
+            REGISER_ADMINS
+            ADMINS_INFO
+        WEBSITE
+            REGISTER_ACCOUNTS
+            USER
+                USER_INFOS
+                USESR_HISTORY
+                USER_NOTIFICATIONS
+                USER_NOTIFICATIONS
+            SELLERS
+                SELLER_INFOS
+                SELLERR_HISTORY
+                SELLERR_NOTIFICATIONS
+                SELLER_NOTIFICATIONS
+                SELLER_PRODUCTS
+
+
+
+3- PROJECT DATABASE MODELS 
+    GLOBAL MODEL (ONLY FOR G_USER AND SELLER)
+        - UNIQUE EMAIL
+        - STRONG PASSWORD 
+        - IS_VERIFIED ?
+        - ROLE??"G_USER" (I MEAN IF THE USER ROLE IS UNDEFIEND OR NOT AVALIABLE THEY ARE DEFAULT SELECT AS A GENERAL USER)
+        - IP_TOKEN 
+        - TOKEN ? FOR VERIFICATION
+        - TIMESTAMPS
+    USER MODELS 
+        - USER_INFO 
+            - USERNAME
+            - FULL NAME 
+            - PHONE 
+            - COUNTRY 
+            - STATE OR PROVIENCE
+            - ADDRESS
+            - IMAGE
+        - HISTORY
+            - LOGIN- HISTORY
+            - LOGOUT- HISTORY
+        - NOTIFICATION
+            - NEW FOLLOWED ACCOUNT PRODUCT LAUNCH 
+            - NEWS & UPDATES
+            - ACCOUNT INFO (WARNING ETC)
+        FOLLOWED ACCOUNTS
+            ACCOUNT_ID
+        FOLLOWERS ACCOUNTS :
+            FOLLOWER ID
+        
+
+    SELLER MODELS
+        - SELLER INFO
+            - USERNAME
+            - FULL NAME 
+            - PHONE 
+            - COUNTRY 
+            - STATE OR PROVIENCE
+            - ADDRESS
+            - IMAGE
+        - SELLER SHOP 
+            - SHOP NAME
+            - SHOP IMAGE
+            - SHOP COVER
+            - SHOP DESCRIPTIO
+            - SHOP TYPE
+            - SHOP CATEGORY
+            - SHOP TIMING (ACTIVE OR STOP)
+            - SHOP DELIVERY RANGE 
+
+    
+        - SELLER PRODUCTS
+            - TITLE
+            - DESCRIPTION 
+            - IMAGE-THUMB 
+            - OTHER IMAGES [] 
+            - COLORS []
+            - QUANTITIES 
+            - ITEM SLUG 
+            - ITEM PRICE 
+            - ITEM REVIEWS 
+            - ETC 
+    ADMIN  MODELS
+        - SIGNIN LOGS 
+            - SIGNIN TIME 
+            - SIGNIN IP  (IF THSI IP IS ALREADY LOGIN ANOTHER IP IS NOT CORRECT  IEAM FIRST THEY HAVE LOGOUT FROM TOHER DEVICE)
+        - ADMIN 
+            - EMAIL UNIQUE
+            - PASSWORD 
+            - IP 
+            - ROLE
+
+ 
+        
+            

@@ -15,6 +15,10 @@ const userSchema = mongoose.Schema({
         type: Boolean,
         default: false
     },
+    role: {
+        ...defType,
+        default: "user"
+    }
 }, {
     timestamps: true
 })
@@ -22,3 +26,5 @@ const userSchema = mongoose.Schema({
 
 const RegisterUserModel = mongoose.model("registeruser", userSchema)
 export default RegisterUserModel
+
+

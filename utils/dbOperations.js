@@ -1,4 +1,5 @@
-import RegisterUserModel from "../models/RegisterUser.js"
+import RegisterUserModel from "../models/website/Register_accounts.js";
+
 
 export const checkExistUserByEmail = async (email) => {
     const checkUser = await RegisterUserModel.findOne({ email });
