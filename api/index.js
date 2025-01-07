@@ -15,7 +15,7 @@ app.use(cookieParser())
 
 const __dirname = import.meta.dirname
 // app.use(express.static(")))
-app.use(express.static(path.join(__dirname, "public")))
+app.use(express.static(path.join(import.meta.dirname, "../public")))
 
 
 
@@ -24,7 +24,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
 app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "views"));
+app.set("views", "views");
 
 app.use("/api/auth/", authRoute);
 app.use("/app/admin/", dashboardRouter);
