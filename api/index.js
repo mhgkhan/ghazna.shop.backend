@@ -15,7 +15,7 @@ app.use(cookieParser())
 
 // const __dirname = import.meta.dirname
 // app.use(express.static(")))
-app.use(express.static("public"))
+app.use(express.static("../public"))
 
 
 
