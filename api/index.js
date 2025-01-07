@@ -24,7 +24,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
 app.set("view engine", "ejs");
-app.set("views", "views");
+app.set("views", path.join(path.resolve(), "views"));
 
 app.use("/api/auth/", authRoute);
 app.use("/app/admin/", dashboardRouter);
