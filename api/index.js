@@ -13,9 +13,9 @@ const app = express();
 app.use(cors())
 app.use(cookieParser())
 
-const __dirname = path.resolve();
+const __dirname = import.meta.dirname
 // app.use(express.static(")))
-app.use(express.static("public"))
+app.use(express.static(path.join(__dirname, "public")))
 
 
 
