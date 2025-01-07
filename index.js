@@ -4,10 +4,10 @@ dotenv.config();
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
-import dashboardRouter from "./auth/dashboard/dashboard.routes.js"
+import dashboardRouter from "./api/apiauth/dashboard/dashboard.routes.js"
 import path from "path";
 import cookieParser from "cookie-parser";
-import authRoute from "./auth/frontend/auth.js";
+import authRoute from "./api/apiauth/frontend/auth.js";
 
 const app = express();
 app.use(cors())
@@ -15,7 +15,7 @@ app.use(cookieParser())
 
 // const __dirname = import.meta.dirname
 // app.use(express.static(")))
-app.use(express.static(path.join(import.meta.dirname, "../public")))
+app.use(express.static(path.join(process.cwd(), "/public")))
 
 
 
@@ -24,7 +24,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
 app.set("view engine", "ejs");
-app.set("views", path.join(path.resolve(), "views"));
+app.set("views", path.join(process.cwd(), "views"));
 
 app.use("/api/auth/", authRoute);
 app.use("/app/admin/", dashboardRouter);
