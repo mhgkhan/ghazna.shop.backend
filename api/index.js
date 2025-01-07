@@ -4,10 +4,10 @@ dotenv.config();
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
-import dashboardRouter from "./api/apiauth/dashboard/dashboard.routes.js"
+import dashboardRouter from "./auth/dashboard/dashboard.routes.js"
 import path from "path";
 import cookieParser from "cookie-parser";
-import authRoute from "./api/apiauth/frontend/auth.js";
+import authRoute from "./auth/frontend/auth.js";
 
 const app = express();
 app.use(cors())

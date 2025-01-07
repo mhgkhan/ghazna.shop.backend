@@ -4,9 +4,9 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "node --env-file=.env index.js",
-    "dev": "node --env-file=.env --watch index.js",
-    "start": "node --env-file=.env index.js"
+    "test": "node --env-file=.env api/index.js",
+    "dev": "node --env-file=.env --watch api/index.js",
+    "start": "node --env-file=.env api/index.js"
   },
   "repository": {
     "type": "git",
