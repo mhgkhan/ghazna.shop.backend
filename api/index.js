@@ -13,9 +13,9 @@ const app = express();
 app.use(cors())
 app.use(cookieParser())
 
-const __dirname = import.meta.dirname
+// const __dirname = import.meta.dirname
 // app.use(express.static(")))
-app.use(express.static(path.join(import.meta.dirname, "../public")))
+app.use(express.static("public"))
 
 
 
@@ -24,7 +24,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
 app.set("view engine", "ejs");
-app.set("views", path.join(process.cwd(), "views"));
+app.set("views", "views");
 
 app.use("/api/auth/", authRoute);
 app.use("/app/admin/", dashboardRouter);
