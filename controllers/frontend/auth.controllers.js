@@ -1,6 +1,7 @@
 import { errResponse, sendErrResponse, sendSuccessResponse } from "../../utils/responses.js";
-import { checkExistUserByEmail, saveUser } from "../../utils/dbOperations.js";
+import { checkExistUserByEmail, getUserById, saveUser } from "../../utils/dbOperations.js";
 import { comparePassword, generateJWTToken, hashPassword, verifyJWTToken } from "../../utils/hasingAndTokens.js";
+import { sendMailing } from "../../config/MailObjs.js";
 
 
 class authControllers {
@@ -22,6 +23,13 @@ class authControllers {
                     // creating token
                     const token = generateJWTToken({ id: document._id, verified: false }, "10h");
 
+                    const sendMail = await sendMailing({
+                        from: process.env.EMAIL,
+                        to: document.email,
+                        subject: "VERIFY YOUR ACCOUNT (ghazna.shop)",
+                        text: "",
+                        html: `<h1>Click on the link to verify your email</h1><a href="${process.env.webURL}api/auth/users/verify/${token}">Verify</a>`
+                    })
                     return sendSuccessResponse(res, 201, true, { token }, "User registered successfully")
                 }
                 else {
@@ -75,10 +83,32 @@ class authControllers {
                     return sendErrResponse(res, false, "Token not valid", 400)
                 }
                 else {
-                    if(!verifyToken.verified){
-                        return sendErrResponse(res, false, "Token not verified", 400)
+                    const checkUser = await getUserById(id);
+                    if (!verifyToken.verified) {
+
+                        if (!checkUser) {
+                            return sendErrResponse(res, false, "Token not verified", 400)
+                        }
+                        else {
+                            if (!checkUser.isVerified) {
+                                return sendErrResponse(res, false, "Token not verified", 400)
+                            }
+                            else {
+
+                                const payload = {
+                                    id: checkUser._id,
+                                    verified: true
+                                }
+
+                                return sendSuccessResponse(res, 200, true, { token }, "Token is valid")
+                            }
+                        }
+
                     }
-                    return sendSuccessResponse(res, 200, true, { token }, "Token is valid")
+
+
+
+
                 }
             }
         } catch (error) {

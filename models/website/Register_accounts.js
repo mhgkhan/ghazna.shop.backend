@@ -18,7 +18,7 @@ const userSchema = mongoose.Schema({
     role: {
         ...defType,
         default: "user"
-    }
+    },
 }, {
     timestamps: true
 })

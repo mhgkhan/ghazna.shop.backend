@@ -9,12 +9,17 @@ import path from "path";
 import cookieParser from "cookie-parser";
 import authRoute from "./auth/frontend/auth.js";
 
+import nodemailer from "nodemailer"
+import { transporterOpts } from "../config/MailObjs.js";
+
+
+
 const app = express();
 app.use(cors())
 app.use(cookieParser())
 
-// const __dirname = import.meta.dirname
-// app.use(express.static(")))
+
+
 app.use(express.static(path.join(process.cwd(), "/public")))
 
 
@@ -29,8 +34,13 @@ app.set("views", path.join(process.cwd(), "views"));
 app.use("/api/auth/", authRoute);
 app.use("/app/admin/", dashboardRouter);
 
-app.get("/", (req, res) => {
-    res.status(200).json({ website: "https://ghazna.shop" })
+app.get("/", async (req, res) => {
+    try {
+        // await transporter.sendMail(mailOptions);
+        res.status(200).json({ website: "https://ghazna.shop" })
+    } catch (error) {
+        return res.status(500).json({ error: error.message })
+    }
 });
 
 

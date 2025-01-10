@@ -30,5 +30,21 @@ export const getUserByEmail = async (email) => {
     const user = await RegisterUserModel.findOne({ email });
     return user;
 }
+export const getUserById = async (id) => {
+    try {
+        const user = await RegisterUserModel.findOne({ _id: id });
+        console.log(user);
+
+        if (user) {
+            return user;
+        }
+        else {
+            return false
+        }
+
+    } catch (error) {
+        return false;
+    }
+}
 
 
