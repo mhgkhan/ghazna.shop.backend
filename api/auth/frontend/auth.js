@@ -2,7 +2,7 @@ import express from "express";
 import authControllers from "../../../controllers/frontend/auth.controllers.js";
 import { checkIfSigninSignupRecieveDataIsValid } from "../../../middlewares/validations.js";
 import { verifyJWTToken } from "../../../utils/hasingAndTokens.js";
-import { checkExistUserById, getUserById } from "../../../utils/dbOperations.js";
+import { getUserById } from "../../../utils/dbOperations.js";
 import RegisterUserModel from "../../../models/website/Register_accounts.js";
 
 const authRoute = express.Router();
@@ -13,7 +13,7 @@ authRoute.post("/users/register", checkIfSigninSignupRecieveDataIsValid, authCon
 authRoute.get("/users/verify/:token", async (req, res) => {
     const token = req.params.token
 
-    console.log(token);
+    // console.log(token);
 
 
     try {
@@ -25,7 +25,7 @@ authRoute.get("/users/verify/:token", async (req, res) => {
         else {
             const verifyToken = verifyJWTToken(token)
 
-            console.log(verifyToken);
+            // console.log(verifyToken);
 
 
 
