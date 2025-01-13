@@ -99,7 +99,7 @@ class authControllers {
             else {
                 const verifyToken = verifyJWTToken(token);
 
-                const {id} = verifyToken;
+                const { id } = verifyToken;
 
                 // console.log(verifyToken)
                 if (!verifyToken) {
@@ -109,7 +109,7 @@ class authControllers {
                     const checkUser = await getUserById(id);
 
                     console.log(checkUser);
-                    
+
 
                     if (!verifyToken.verified) {
 
@@ -126,6 +126,8 @@ class authControllers {
                                     id: checkUser._id,
                                     verified: true
                                 }
+
+                                const newToken = generateJWTToken(payload, "10h")
 
                                 return sendSuccessResponse(res, 200, true, { token }, "Token is valid")
                             }
