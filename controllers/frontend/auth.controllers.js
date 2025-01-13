@@ -129,7 +129,7 @@ class authControllers {
 
                                 const newToken = generateJWTToken(payload, "10h")
 
-                                return sendSuccessResponse(res, 200, true, { token }, "Token is valid")
+                                return sendSuccessResponse(res, 200, true, { token:newToken }, "Token is valid")
                             }
                         }
 
